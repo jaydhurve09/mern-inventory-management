@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
+const errorHandler = require('./middleware/errorMiddleware');
 
 const app = express();
 
@@ -22,6 +23,9 @@ app.get('/', (req, res)=>{
     res.send('This is the response')
 })
 
+//Error Middleware
+app.use(errorHandler);
+//Connect to DB and start server
 mongoose
 .connect(process.env.MONGO_URI)
 .then(()=>{
