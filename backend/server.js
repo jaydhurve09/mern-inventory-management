@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -12,6 +13,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+//Routes middleware
+app.use("/api/users", userRoutes);
 
 //Routes
 app.get('/', (req, res)=>{
