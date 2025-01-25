@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema({
     photo: {
         type: String,
         required: [true, "Please add a photo"],
-        default: ""
+        default: "dadad.png"
     },
 
     phone: {
